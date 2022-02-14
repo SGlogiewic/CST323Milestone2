@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/basicTemplate">
+<head>
+<style>
+	.fieldError {
+		color:red;
+	}
+	.form-group {
+		width:30%;
+	}
+	body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    font-family: Arial;
+}
+
+h2 {
+    color: blue;
+}
+
+p {
+    font-style: italic;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 2px;
+}
+
+ul.nav {
+  padding-left: 0px;
+  /* background-color: #3D99CE; */
+  text-align: center;
+}
+
+ul.nav > li {
+  display: inline-block;
+  padding: 10px 20px;
+}
+
+ul.nav > li > a {
+  color: black;
+  text-decoration: none;
+}
+
+.button {
+	background-color: #95C8D8;
+    border: none;
+    color: white;
+    padding: 6px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+</head>
+<div layout:fragment="content">
+	<h1>Management Page</h1>
+</div>
+<body>
+    <div layout:fragment="content" class="container-xl">
+        <h1 th:text="${title}"></h1>
+        <table>
+            <tr>
+                <th>USER ID</th>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+                <th>EMAIL</th>
+                <th>PHONE</th>
+                <th>USERNAME</th>
+                <th>PASSWORD</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.user_id}"></td>
+                <td th:text="${user.first_name}"></td>
+                <td th:text="${user.last_name}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.phone}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.password}"></td>
+            </tr>
+        </table>
+        <ul class="nav">
+			<li><a href="/manage/searchForm" class="button">Search Users</a></li>
+			<li><a href="/manage/addNewForm" class="button">Create New User</a></li>
+		</ul>
+    </div>
+</body>
+</html>
